@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="ServeSpan connects Dallas-Fort Worth homeowners with vetted, trusted contractors for roofing, HVAC, windows, cleaning, and more. Get a free quote in minutes." />
+  <title>ServeSpan — Dallas-Fort Worth's Home Services Marketplace</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:    #0A2540;
+      --navy-90: rgba(10,37,64,0.9);
+      --teal:    #00C49A;
+      --teal-15: rgba(0,196,154,0.15);
+      --teal-35: rgba(0,196,154,0.35);
+      --white:   #FFFFFF;
+      --bg:      #F6F9FC;
+      --border:  #E6E6E6;
+      --muted:   #525F7F;
+      --text:    #1A2B42;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─────────────── NAV ─────────────── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 56px;
+      height: 70px;
+      box-shadow: 0 1px 4px rgba(10,37,64,0.06);
+    }
+
+    .logo-wrap {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      text-decoration: none;
+    }
+
+    .logo-wrap img {
+      height: 38px;
+      width: auto;
+      display: block;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 36px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    nav ul li a:hover { color: var(--navy); }
+
+    .nav-cta {
+      background: var(--teal) !important;
+      color: var(--white) !important;
+      padding: 11px 24px !important;
+      border-radius: 8px !important;
+      font-weight: 700 !important;
+      font-size: 14px !important;
+      transition: opacity 0.2s !important;
+      white-space: nowrap;
+    }
+
+    .nav-cta:hover { opacity: 0.88 !important; }
+
+    /* ─────────────── HERO ─────────────── */
+    .hero {
+      background: var(--navy);
+      color: var(--white);
+      padding: 100px 56px 88px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -180px; left: 50%;
+      transform: translateX(-50%);
+      width: 900px; height: 900px;
+      background: radial-gradient(circle, rgba(0,196,154,0.10) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--teal-15);
+      color: var(--teal);
+      border: 1px solid var(--teal-35);
+      border-radius: 100px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.9px;
+      text-transform: uppercase;
+      padding: 7px 18px;
+      margin-bottom: 32px;
+    }
+
+    .hero-badge::before {
+      content: '';
+      width: 7px; height: 7px;
+      background: var(--teal);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .hero h1 {
+      font-family: 'Lora', serif;
+      font-size: clamp(38px, 5.5vw, 62px);
+      font-weight: 600;
+      line-height: 1.16;
+      max-width: 800px;
+      margin: 0 auto 26px;
+      letter-spacing: -0.5px;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--teal);
+    }
+
+    .hero p {
+      font-size: 18px;
+      color: rgba(255,255,255,0.70);
+      max-width: 580px;
+      margin: 0 auto 44px;
+      line-height: 1.75;
+      font-weight: 400;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--teal);
+      color: var(--white);
+      padding: 17px 38px;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: opacity 0.2s, transform 0.15s;
+      display: inline-block;
+    }
+
+    .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+
+    .btn-ghost {
+      background: transparent;
+      color: rgba(255,255,255,0.85);
+      padding: 17px 38px;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: 600;
+      text-decoration: none;
+      border: 1.5px solid rgba(255,255,255,0.22);
+      transition: background 0.2s, border-color 0.2s;
+      display: inline-block;
+    }
+
+    .btn-ghost:hover {
+      background: rgba(255,255,255,0.08);
+      border-color: rgba(255,255,255,0.40);
+    }
+
+    /* ─────────────── TRUST BAR ─────────────── */
+    .trust-bar {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      padding: 22px 56px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 52px;
+      flex-wrap: wrap;
+    }
+
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 14px;
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    .trust-item svg {
+      flex-shrink: 0;
+    }
+
+    /* ─────────────── HOW IT WORKS ─────────────── */
+    .how-section {
+      padding: 88px 56px;
+      background: var(--bg);
+      text-align: center;
+    }
+
+    .section-label {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 14px;
+    }
+
+    .section-title {
+      font-family: 'Lora', serif;
+      font-size: clamp(28px, 3.5vw, 42px);
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 14px;
+      line-height: 1.22;
+    }
+
+    .section-sub {
+      font-size: 17px;
+      color: var(--muted);
+      max-width: 540px;
+      margin: 0 auto 56px;
+      line-height: 1.75;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 28px;
+      max-width: 1060px;
+      margin: 0 auto;
+    }
+
+    .step {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 36px 28px;
+      text-align: left;
+      position: relative;
+    }
+
+    .step-num {
+      width: 40px; height: 40px;
+      background: var(--navy);
+      color: var(--teal);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      font-weight: 800;
+      margin-bottom: 20px;
+    }
+
+    .step h3 {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 10px;
+    }
+
+    .step p {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    /* ─────────────── SERVICES ─────────────── */
+    .services-section {
+      padding: 88px 56px;
+      background: var(--white);
+    }
+
+    .services-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 22px;
+    }
+
+    .card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 30px 26px;
+      transition: box-shadow 0.22s, transform 0.22s;
+      cursor: default;
+    }
+
+    .card:hover {
+      box-shadow: 0 10px 36px rgba(10,37,64,0.09);
+      transform: translateY(-4px);
+    }
+
+    .card-icon {
+      width: 48px; height: 48px;
+      background: var(--teal-15);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      font-size: 24px;
+    }
+
+    .card h3 {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 9px;
+    }
+
+    .card p {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.68;
+    }
+
+    /* ─────────────── SOCIAL PROOF ─────────────── */
+    .proof-section {
+      padding: 88px 56px;
+      background: var(--bg);
+    }
+
+    .proof-inner {
+      max-width: 1060px;
+      margin: 0 auto;
+    }
+
+    .reviews {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 22px;
+    }
+
+    .review {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 28px 26px;
+    }
+
+    .stars {
+      color: #F59E0B;
+      font-size: 16px;
+      letter-spacing: 2px;
+      margin-bottom: 14px;
+    }
+
+    .review p {
+      font-family: 'Lora', serif;
+      font-size: 15px;
+      color: var(--text);
+      line-height: 1.72;
+      font-style: italic;
+      margin-bottom: 18px;
+    }
+
+    .reviewer {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .reviewer-avatar {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: var(--navy);
+      color: var(--teal);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 15px;
+      flex-shrink: 0;
+    }
+
+    .reviewer-info strong {
+      display: block;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--navy);
+    }
+
+    .reviewer-info span {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    /* ─────────────── LEAD FORM ─────────────── */
+    .form-section {
+      background: var(--navy);
+      padding: 88px 56px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .form-section::before {
+      content: '';
+      position: absolute;
+      bottom: -200px; right: -200px;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(0,196,154,0.08) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .form-inner {
+      max-width: 660px;
+      margin: 0 auto;
+      text-align: center;
+      position: relative;
+    }
+
+    .form-inner .section-label { color: var(--teal); }
+
+    .form-inner .section-title {
+      color: var(--white);
+    }
+
+    .form-inner .section-sub {
+      color: rgba(255,255,255,0.62);
+      margin-bottom: 44px;
+    }
+
+    .form-box {
+      background: var(--white);
+      border-radius: 18px;
+      padding: 40px 36px 32px;
+      text-align: left;
+      box-shadow: 0 24px 64px rgba(0,0,0,0.22);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      margin-bottom: 0;
+    }
+
+    .form-group.full {
+      grid-column: 1 / -1;
+      margin-bottom: 16px;
+    }
+
+    .form-group label {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--navy);
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      padding: 13px 15px;
+      border: 1.5px solid var(--border);
+      border-radius: 9px;
+      font-size: 14px;
+      font-family: 'Inter', sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      width: 100%;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--teal);
+      box-shadow: 0 0 0 3px rgba(0,196,154,0.14);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 90px;
+    }
+
+    .form-submit {
+      width: 100%;
+      background: var(--teal);
+      color: var(--white);
+      border: none;
+      padding: 17px;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: 700;
+      font-family: 'Inter', sans-serif;
+      cursor: pointer;
+      margin-top: 8px;
+      transition: opacity 0.2s, transform 0.15s;
+      letter-spacing: 0.2px;
+    }
+
+    .form-submit:hover { opacity: 0.88; transform: translateY(-1px); }
+
+    .form-note {
+      font-size: 12px;
+      color: var(--muted);
+      text-align: center;
+      margin-top: 16px;
+      line-height: 1.6;
+    }
+
+    /* ─────────────── FOOTER ─────────────── */
+    footer {
+      background: var(--navy);
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding: 36px 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    footer .logo-wrap img {
+      height: 30px;
+      /* Invert to white for dark background */
+      filter: brightness(0) invert(1);
+    }
+
+    footer p {
+      font-size: 13px;
+      color: rgba(255,255,255,0.45);
+    }
+
+    footer nav-links {
+      display: flex;
+      gap: 24px;
+    }
+
+    footer a {
+      font-size: 13px;
+      color: rgba(255,255,255,0.45);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    footer a:hover { color: rgba(255,255,255,0.80); }
+
+    /* ─────────────── RESPONSIVE ─────────────── */
+    @media (max-width: 768px) {
+      nav { padding: 0 20px; }
+      nav ul { gap: 16px; }
+      nav ul li:not(:last-child) { display: none; }
+      .hero { padding: 72px 24px 64px; }
+      .trust-bar { padding: 18px 24px; gap: 24px; }
+      .how-section, .services-section, .proof-section, .form-section { padding: 64px 24px; }
+      .form-row { grid-template-columns: 1fr; }
+      .form-box { padding: 28px 22px 24px; }
+      footer { padding: 28px 24px; flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAV ── -->
+  <nav>
+    <a href="#" class="logo-wrap" aria-label="ServeSpan Home">
+      <img src="logo.png" alt="ServeSpan" />
+    </a>
+    <ul>
+      <li><a href="#how-it-works">How It Works</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#get-quote" class="nav-cta">Get a Free Quote</a></li>
+    </ul>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <section class="hero">
+    <div class="hero-badge">Dallas-Fort Worth's #1 Home Services Platform</div>
+    <h1>One Call. Every Service.<br /><em>Always Handled.</em></h1>
+    <p>ServeSpan connects DFW homeowners with vetted, trusted contractors for roofing, HVAC, windows, and more — fully managed, guaranteed, and stress-free.</p>
+    <div class="hero-actions">
+      <a href="#get-quote" class="btn-primary">Get My Free Quote Today</a>
+      <a href="#how-it-works" class="btn-ghost">See How It Works</a>
+    </div>
+  </section>
+
+  <!-- ── TRUST BAR ── -->
+  <div class="trust-bar">
+    <div class="trust-item">
+      <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="#00C49A" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+      100% Vetted Contractors
+    </div>
+    <div class="trust-item">
+      <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="#00C49A" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+      Response Within 1 Hour
+    </div>
+    <div class="trust-item">
+      <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="#00C49A" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+      Satisfaction Guaranteed
+    </div>
+    <div class="trust-item">
+      <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="#00C49A" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+      500+ Local Pros
+    </div>
+    <div class="trust-item">
+      <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="#00C49A" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg>
+      4.9 / 5 Average Rating
+    </div>
+  </div>
+
+  <!-- ── HOW IT WORKS ── -->
+  <section class="how-section" id="how-it-works">
+    <div class="section-label">Simple Process</div>
+    <h2 class="section-title">From Request to Done in 3 Steps</h2>
+    <p class="section-sub">No more calling around, getting ghosted, or overpaying. ServeSpan handles everything from the first call to the final invoice.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>Tell Us What You Need</h3>
+        <p>Fill out a quick form or call us directly. Describe your project, your location, and when you need it done. Takes less than 2 minutes.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>We Match You Instantly</h3>
+        <p>Our platform matches your request to the best available, vetted contractor in your area. You'll receive a confirmed quote within the hour.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>Job Done, Guaranteed</h3>
+        <p>Your contractor shows up on time and completes the work. You only pay when you're satisfied. We back every job with our satisfaction guarantee.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SERVICES ── -->
+  <section class="services-section" id="services">
+    <div class="services-inner">
+      <div class="section-label">What We Handle</div>
+      <h2 class="section-title">Every Service Your Home Needs</h2>
+      <p class="section-sub" style="max-width:560px;">From emergency roof repairs after a DFW hailstorm to routine maintenance, ServeSpan dispatches the right professional — every single time.</p>
+      <div class="cards">
+        <div class="card">
+          <div class="card-icon">🏠</div>
+          <h3>Roofing</h3>
+          <p>Storm damage, full replacements, inspections, and insurance claim support. Our roofers are DFW's most trusted.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">❄️</div>
+          <h3>HVAC</h3>
+          <p>Year-round heating and cooling service, emergency repairs, and new system installations for DFW's extreme climate.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🪟</div>
+          <h3>Window Replacement</h3>
+          <p>Energy-efficient upgrades, storm-resistant glass, and full replacement windows installed by certified pros.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🧹</div>
+          <h3>Cleaning Services</h3>
+          <p>Residential deep cleaning, move-in/move-out, and recurring maintenance schedules tailored to your home.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🚽</div>
+          <h3>Porta Potty Rental</h3>
+          <p>Event, construction, and residential rentals with same-day delivery available across the entire DFW metroplex.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🧊</div>
+          <h3>Ice Machine Rental</h3>
+          <p>Commercial and residential ice machine rentals for events, job sites, and businesses. Flexible terms available.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SOCIAL PROOF ── -->
+  <section class="proof-section" id="reviews">
+    <div class="proof-inner">
+      <div class="section-label" style="text-align:center;">Real Homeowners. Real Results.</div>
+      <h2 class="section-title" style="text-align:center;">DFW Trusts ServeSpan</h2>
+      <p class="section-sub">Join hundreds of Dallas-Fort Worth homeowners who stopped stressing about finding contractors.</p>
+      <div class="reviews">
+        <div class="review">
+          <div class="stars">★★★★★</div>
+          <p>"After the hailstorm in April, I was dreading the whole roofing process. ServeSpan had a contractor at my door the next morning and handled everything including the insurance paperwork. Absolutely seamless."</p>
+          <div class="reviewer">
+            <div class="reviewer-avatar">MR</div>
+            <div class="reviewer-info">
+              <strong>Michael R.</strong>
+              <span>Frisco, TX — Roofing Replacement</span>
+            </div>
+          </div>
+        </div>
+        <div class="review">
+          <div class="stars">★★★★★</div>
+          <p>"I've used three different services to find contractors and ServeSpan is in a completely different league. One form, one call back, one contractor who actually showed up on time. That's it."</p>
+          <div class="reviewer">
+            <div class="reviewer-avatar">JT</div>
+            <div class="reviewer-info">
+              <strong>Jennifer T.</strong>
+              <span>Plano, TX — HVAC Repair</span>
+            </div>
+          </div>
+        </div>
+        <div class="review">
+          <div class="stars">★★★★★</div>
+          <p>"Used them for window replacement and a deep clean before selling my house. Both contractors were professional, on time, and the pricing was fair. Sold the house in a week. Coincidence? I think not."</p>
+          <div class="reviewer">
+            <div class="reviewer-avatar">DC</div>
+            <div class="reviewer-info">
+              <strong>David C.</strong>
+              <span>Allen, TX — Windows &amp; Cleaning</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── LEAD FORM ── -->
+  <section class="form-section" id="get-quote">
+    <div class="form-inner">
+      <div class="section-label">Free &amp; No Obligation</div>
+      <h2 class="section-title">Get Your Free Quote in Minutes</h2>
+      <p class="section-sub">Tell us what you need. We'll match you with the best local pro and have someone in touch within the hour.</p>
+      <div class="form-box">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="fname">First Name</label>
+            <input type="text" id="fname" name="first_name" placeholder="John" autocomplete="given-name" />
+          </div>
+          <div class="form-group">
+            <label for="lname">Last Name</label>
+            <input type="text" id="lname" name="last_name" placeholder="Smith" autocomplete="family-name" />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" placeholder="(214) 555-0100" autocomplete="tel" />
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="john@example.com" autocomplete="email" />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="service">Service Needed</label>
+            <select id="service" name="service">
+              <option value="">Select a service...</option>
+              <option value="roofing">Roofing</option>
+              <option value="hvac">HVAC</option>
+              <option value="windows">Window Replacement</option>
+              <option value="cleaning">Cleaning Services</option>
+              <option value="porta-potty">Porta Potty Rental</option>
+              <option value="ice-machine">Ice Machine Rental</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="zip">Your Zip Code</label>
+            <input type="text" id="zip" name="zip" placeholder="75201" maxlength="5" />
+          </div>
+        </div>
+        <div class="form-group full">
+          <label for="details">Briefly describe your project (optional)</label>
+          <textarea id="details" name="details" placeholder="e.g. My roof was damaged in the last hailstorm. I need an inspection and estimate for a full replacement..."></textarea>
+        </div>
+        <button type="submit" class="form-submit">Get My Free Quote — It's 100% Free →</button>
+        <p class="form-note">🔒 No spam. No pressure. We only contact you about your request. Your information is never sold.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <a href="#" class="logo-wrap" aria-label="ServeSpan Home">
+      <img src="logo.png" alt="ServeSpan" />
+    </a>
+    <p>© 2026 ServeSpan. All rights reserved. Proudly serving Dallas-Fort Worth, TX.</p>
+    <div style="display:flex; gap:24px;">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+      <a href="#">For Contractors</a>
+    </div>
+  </footer>
+
+</body>
+</html>
